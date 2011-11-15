@@ -1,0 +1,97 @@
+Set up git
+--------------
+  git config --global user.name "Your Name"
+  git config --global user.email martin.barreyro@excedesoft.com
+
+
+Para inicializar el repo
+------------------------
+mkdir practica-git
+cd practica-git
+git init
+touch README
+git add README
+git commit -m 'Archivo readme para inicializar el repo'
+git remote add origin git@github.com:martin-barreyro-developer/practica-git.git
+git push -u origin master
+
+Agregar un archivo en un subdirectorio, comitearlo y hacer el push
+------------------------------------------------------------------
+
+mkdir <minombre>
+
+git add <minombre> # no agrega nada
+
+touch minombre/minombre # crea un archivo
+
+git status # ver info el directorio no es conocido por git
+
+git add <minombre> #ó
+git add <minombre/minombre> # Los dos hacen lo mismo salvo que hayan más archivos
+
+git status # el archivo esta preparado para el commit
+
+git commit -m "Este es un mensaje asociado a mi commit" # Hacemos el commit con su mensaje, vemos que nos devuelve info del branch y del commit
+
+git push #enviar los cambios al origen
+
+Modificar un archivo, comitearlo y hacer el push
+------------------------------------------------------------------
+echo "Un cambio" > martin/martin
+git diff # Ver las diferencias de todos los archivos
+git diff martin/martin # ver las diferencias de solo un archivo
+
+git status # Para ver el archivo modificado
+
+git add martin/martin # Agregamos el archivo al proximo commit
+
+git commit -m "Este es un mensaje explicando el commit"
+
+Creación de un branch y su publicación
+------------------------------------------------------------------
+
+# En dos pasos
+git branch <minombre>
+git checkout <minombre>
+
+# Todo en un solo paso
+git checkout -b <minombre> 
+
+git push -u origin <minombre> #Con esto publicamos el branch en el origen (repo gitgub
+
+Seguir (tracking) y comitear a un branch remoto
+------------------------------------------------------------------
+git branch -a # listar todos los branchs (locales y remotos)
+
+git checkout --track origin/<nombre-branch-en-origen> # eligen un branch hecho por otro de los usuarios
+
+echo "Sumamos un archivo más" >> <nombre-otro-usuario>/<minombre> # Se crea otro archivo
+
+git add <nombre-otro-usuario>/<minombre> # Se agrega el archivo al commit
+
+git commit -m "Te cree otro archivo en tu directorio" # Se confirma el agregar
+
+git push # Se envian los cambios
+
+
+Merge de un branch a otro
+--------------------------
+
+# Situado en mi branch
+
+git merge origin/martin # traigo todo los commits del branch martin en el origen
+
+git log # veo como quedaron los commits
+
+git cherry-pick 4a46190be6e96bc6a236381a58e7b9feb71ba465 # traemos un commit en particular
+
+git checkout master # vuelvo al master
+
+git merge <minombre>
+
+
+
+
+
+
+
